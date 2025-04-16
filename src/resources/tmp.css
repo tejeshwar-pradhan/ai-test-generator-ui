@@ -1,0 +1,408 @@
+/* General Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f8; /* Lighter background for a modern feel */
+  color: #333; /* Dark text color for better contrast */
+  padding-bottom: 60px; /* To ensure footer doesn't overlap content */
+  box-sizing: border-box; /* Ensures padding and border are included in width/height */
+  line-height: 1.6; /* Improves readability */
+}
+
+/* Header Styling */
+header {
+  background-color: #4C9B9E; /* Slightly darker shade of teal */
+  color: white;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/* Tabs Section */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.tab {
+  padding: 12px 24px;
+  margin: 0 12px;
+  background-color: #e6f7f9;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.tab.active-tab {
+  background-color: #4C9B9E;
+  color: white;
+}
+
+.tab:hover {
+  background-color: #b3e0e7;
+  transform: scale(1.05); /* Adds a subtle zoom effect */
+}
+
+/* Containers for Different Sections */
+.container {
+  width: 90%;
+  max-width: 1600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* More intense shadow */
+  display: none; /* Initially hide all containers */
+}
+
+.container.visible {
+  display: block; /* Show container for active tab */
+}
+
+.container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #4C9B9E; /* Header text in a contrasting color */
+  font-weight: 600;
+}
+
+/* Flexbox Layout for Left and Right Sections (Jira) */
+#verify {
+  display: flex;
+  padding: 25px;
+  gap: 25px;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+#verify .jira-list {
+  flex: 0 1 320px; /* Left section (Jira list) takes up 320px but can grow/shrink */
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  max-height: 600px; /* Prevent it from growing too large */
+}
+
+#verify .jira-details {
+  flex: 2; /* Right section (Jira details) takes up more space */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  overflow-y: auto;
+  gap: 25px;
+}
+
+#verify .jira-details .test-case-section,
+#verify .jira-details .updatable-test-case-section {
+  flex: 1;
+  min-width: 320px; /* Ensure sections are wide enough */
+  background-color: #fafafa; /* Lighter background */
+  padding: 15px;
+  border-radius: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #333;
+}
+
+/* Styling for the textarea */
+#verify .jira-details textarea {
+  width: 100%;
+  height: 700px;
+  margin-top: 15px;
+  border-color: #ccc;
+  resize: vertical;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Styling for buttons */
+#verify .jira-details button {
+  margin-top: 15px;
+  padding: 12px 28px;
+  background-color: #4C9B9E;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#verify .jira-details button:hover {
+  background-color: #264653;
+  transform: scale(1.05);
+}
+
+/* Styling for the Jira links */
+#verify .jira-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#verify .jira-list li {
+  margin-bottom: 20px;
+  cursor: pointer;
+  padding: 12px 18px;
+  background-color: #e6f7f9;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+#verify .jira-list li:hover {
+  background-color: #b3e0e7;
+}
+
+#verify .jira-list li.active {
+  background-color: #4C9B9E;
+  color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab {
+    margin: 10px 0;
+  }
+
+  /* Adjust container width on mobile */
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  /* Adjust layout for mobile */
+  #verify {
+    flex-direction: column; /* Stack sections vertically */
+    gap: 15px;
+  }
+
+  #verify .jira-list {
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  #verify .jira-details {
+    flex-direction: column; /* Stack test case sections vertically */
+  }
+
+  #verify .jira-details .test-case-section,
+  #verify .jira-details .updatable-test-case-section {
+    width: 100%; /* Take up full width on smaller screens */
+  }
+}
+
+/* Styling for the Jira dropdown in Automated Tab */
+.jira-dropdown {
+  margin-bottom: 25px;
+}
+
+.jira-dropdown label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.jira-dropdown select {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  background-color: #fafafa;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.jira-dropdown select:hover {
+  background-color: #e6f7f9;
+}
+
+/* Styling for Jira Details in Automated Tab */
+.jira-details {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.jira-details .test-case-section,
+.jira-details .automated-code-section {
+  flex: 1 1 48%;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #333;
+}
+
+/* Form Group Styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: vertical;
+  color: #333;
+}
+
+/* Styling for Alert or Error Messages */
+.error-message {
+  background-color: #ffcccb;
+  color: #721c24;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #4C9B9E;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Basic styling for the code block */
+.code-block {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  overflow-x: auto;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  white-space: pre-wrap; /* Ensures long lines wrap within the block */
+  word-wrap: break-word; /* Allows wrapping of words if necessary */
+}
+
+/* Syntax highlighting for keywords and other elements */
+.code-block .comment {
+  color: #8e8e8e;
+}
+
+.code-block .keyword {
+  color: #d14;
+  font-weight: bold;
+}
+
+.code-block .string {
+  color: #0c7c59;
+}
+
+.code-block .number {
+  color: #9c7e43;
+}
+
+/* Add styles for inline code snippets */
+.inline-code {
+  background-color: #f0f0f0;
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Style for the Jira search input */
+.jira-search-input {
+  width: 100%;
+  max-width: 400px; /* Adjust the max-width as needed */
+  padding: 8px 12px;
+  margin-bottom: 20px; /* Space between the search input and dropdown */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus state for the input field */
+.jira-search-input:focus {
+  outline: 2px solid #007bff; /* Visible outline */
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add subtle shadow */
+}
+
+/* Optional: Add a placeholder text style */
+.jira-search-input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .jira-search-input {
+    max-width: 100%;
+  }
+}
+
+/* Overlay CSS */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay .spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.jira-checkbox {
+  margin: 5px 0;
+}
+
+.jira-checkbox input {
+  margin-right: 10px;
+}
