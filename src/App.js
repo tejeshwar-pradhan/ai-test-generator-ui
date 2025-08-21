@@ -247,21 +247,6 @@ function App() {
     }
   };
 
-  const toggleJiraSelection = (id) => {
-      setSelectedJiras(prev => ({
-        ...prev,
-        [id]: !prev[id]
-      }));
-    };
-
-
-  // Function to highlight code using Prism.js
-  const highlightCode = () => {
-    const elements = document.querySelectorAll('pre code');
-    elements.forEach((element) => {
-      Prism.highlightElement(element);
-    });
-  };
 
   useEffect(() =>
   {
@@ -467,6 +452,7 @@ function App() {
                 )}
               </div>
             )}
+              <div>test</div>
         </div>
 
         <footer>
