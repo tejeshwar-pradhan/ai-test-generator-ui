@@ -98,12 +98,17 @@ function App() {
     }
   };
 
-  const handleGenerateTestCases = async () => {
-    if (!jiraIds) return alert('Please enter JIRA IDs.');
-
-    const ids = jiraIds.split(',').map(id => id.trim()).filter(Boolean);
-    if (ids.length === 0) return alert('Please enter at least one JIRA ID.');
-
+   const handleGenerateTestCases = async () => {
+    const ids = jiraIds
+      ?.split(',')
+      .map(id => id.trim())
+      .filter(Boolean);
+  
+    if (!ids?.length) {
+      alert('Please enter at least one JIRA ID.');
+      return;
+    }
+  
     showOverlay();
     try {
       const response = await apiClient('/generate-test-cases', {
@@ -111,10 +116,13 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ jira_ids: ids }),
       });
-
-      if (!response.ok) throw new Error('Failed to generate test cases');
-      const data = await response.json();
-      setTestCases(data.testCases);
+  
+      if (!response.ok) {
+        throw new Error('Failed to generate test cases');
+      }
+  
+      const { testCases } = await response.json();
+      setTestCases(testCases);
     } catch (error) {
       setError(`Error generating test cases: ${error.message}`);
     } finally {
